@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita & Prediksi Saham - VStock</title>
+    <link rel="stylesheet" href="news(2).css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>VStock</h1>
+                <span>by Cahaya Citra</span>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="desktop-nav">
+                <a href="home.html">Home</a>
+                <a href="investview(1).html">Investview</a>
+                <a href="news(2).html" class="active">News</a>
+                <a href="about(3).html">About</a>
+                <a href="contact(A).html">Contact</a>
+                <a href="login(A).html" class="login-btn">Login</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <nav class="mobile-nav">
+            <a href="home.html">Home</a>
+            <a href="investview(1).html">Investview</a>
+            <a href="news(2).html" class="active">News</a>
+            <a href="about(3).html">About</a>
+            <a href="contact(A).html">Contact</a>
+            <a href="login(A).html" class="login-btn">Login</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Kabar & Prediksi Saham</h2>
+                <p>Analisis ringkas dan prediksi harga saham terkini dari tim ahli VStock</p>
+            </div>
+        </section>
+
+        <section class="filter-section">
+            <button class="filter-btn active" data-filter="all">Semua Saham</button>
+            <button class="filter-btn" data-filter="naik">Prediksi Naik</button>
+            <button class="filter-btn" data-filter="turun">Prediksi Turun</button>
+        </section>
+
+        <section class="news-list">
+            <!-- Saham Naik -->
+            <div class="news-card" data-prediction="naik">
+                <div class="prediction-badge">PREDIKSI NAIK</div>
+                <h3>Ventra Stock</h3>
+                <span class="company">Ven Store</span>
+                <p class="story">
+                    Tren naik karena penjualan produk baru meningkat 15%. Ekspansi pasar di kota besar mendapat respon positif investor. Prediksi harga naik bulan depan.
+                </p>
+                <div class="stock-info">
+                    <div class="current-price"><strong>Saat ini:</strong> 11.928 Rp</div>
+                    <div class="predicted-price"><strong>Prediksi:</strong> 12.600 Rp</div>
+                </div>
+                <div class="percent-info">
+                    <div class="current-change"><strong>Bulan ini:</strong> +5.2%</div>
+                    <div class="predicted-change"><strong>Bulan depan:</strong> +6.0%</div>
+                </div>
+            </div>
+
+            <div class="news-card" data-prediction="naik">
+                <div class="prediction-badge">PREDIKSI NAIK</div>
+                <h3>Prima Kelas D</h3>
+                <span class="company">Prima Jaya Central IDS</span>
+                <p class="story">
+                    Potensi naik karena proyek infrastruktur baru di sektor properti dan laporan keuangan positif. Investor optimis pertumbuhan berlanjut.
+                </p>
+                <div class="stock-info">
+                    <div class="current-price"><strong>Saat ini:</strong> 18.105 Rp</div>
+                    <div class="predicted-price"><strong>Prediksi:</strong> 18.800 Rp</div>
+                </div>
+                <div class="percent-info">
+                    <div class="current-change"><strong>Bulan ini:</strong> +2.7%</div>
+                    <div class="predicted-change"><strong>Bulan depan:</strong> +3.5%</div>
+                </div>
+            </div>
+
+            <div class="news-card" data-prediction="naik">
+                <div class="prediction-badge">PREDIKSI NAIK</div>
+                <h3>Media Care</h3>
+                <span class="company">ISBN</span>
+                <p class="story">
+                    Stabil & naik tipis karena peluncuran produk baru mendapat sambutan positif dari pasar. Analis prediksi kenaikan moderat bulan depan.
+                </p>
+                <div class="stock-info">
+                    <div class="current-price"><strong>Saat ini:</strong> 15.320 Rp</div>
+                    <div class="predicted-price"><strong>Prediksi:</strong> 16.050 Rp</div>
+                </div>
+                <div class="percent-info">
+                    <div class="current-change"><strong>Bulan ini:</strong> +4.5%</div>
+                    <div class="predicted-change"><strong>Bulan depan:</strong> +5.0%</div>
+                </div>
+            </div>
+
+            <!-- Saham Turun -->
+            <div class="news-card" data-prediction="turun">
+                <div class="prediction-badge">PREDIKSI TURUN</div>
+                <h3>Ekonomika B2</h3>
+                <span class="company">Bisma Nusantara Group</span>
+                <p class="story">
+                    Tertekan karena volatilitas pasar global dan laba kuartal kurang memuaskan. Investor berhati-hati, prediksi harga turun bulan depan.
+                </p>
+                <div class="stock-info">
+                    <div class="current-price"><strong>Saat ini:</strong> 12.750 Rp</div>
+                    <div class="predicted-price"><strong>Prediksi:</strong> 12.300 Rp</div>
+                </div>
+                <div class="percent-info">
+                    <div class="current-change"><strong>Bulan ini:</strong> -1.2%</div>
+                    <div class="predicted-change"><strong>Bulan depan:</strong> -2.0%</div>
+                </div>
+            </div>
+
+            <div class="news-card" data-prediction="turun">
+                <div class="prediction-badge">PREDIKSI TURUN</div>
+                <h3>Ven Plus +</h3>
+                <span class="company">Ven Store</span>
+                <p class="story">
+                    Tertekan oleh persaingan ketat dan ketidakpastian pasar. Investor disarankan memantau perkembangan produk baru.
+                </p>
+                <div class="stock-info">
+                    <div class="current-price"><strong>Saat ini:</strong> 9.880 Rp</div>
+                    <div class="predicted-price"><strong>Prediksi:</strong> 9.750 Rp</div>
+                </div>
+                <div class="percent-info">
+                    <div class="current-change"><strong>Bulan ini:</strong> -0.8%</div>
+                    <div class="predicted-change"><strong>Bulan depan:</strong> -1.5%</div>
+                </div>
+            </div>
+
+            <div class="news-card" data-prediction="naik">
+                <div class="prediction-badge">PREDIKSI NAIK</div>
+                <h3>Batik BenangRatu</h3>
+                <span class="company">Mboja Semarang Produksi</span>
+                <p class="story">
+                    Stabil & naik karena permintaan meningkat di pasar lokal dan ekspor. Prediksi kenaikan moderat bulan depan.
+                </p>
+                <div class="stock-info">
+                    <div class="current-price"><strong>Saat ini:</strong> 7.650 Rp</div>
+                    <div class="predicted-price"><strong>Prediksi:</strong> 7.950 Rp</div>
+                </div>
+                <div class="percent-info">
+                    <div class="current-change"><strong>Bulan ini:</strong> +2.3%</div>
+                    <div class="predicted-change"><strong>Bulan depan:</strong> +3.0%</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 VStock by Cahaya Citra. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="news(2).js"></script>
+</body>
+</html>
