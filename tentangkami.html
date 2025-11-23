@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - VStock</title>
+    <style>
+        /* ========================================================= */
+        /* 1. GLOBAL STYLES & RESET */
+        /* ========================================================= */
+        :root {
+            --color-primary: #CC0000;    
+            --color-primary-dark: #990000; 
+            --color-text-dark: #333;
+            --color-text-light: #555;
+            --color-background: #ffffff;
+            --color-light-gray: #f7f7f7;
+            --max-width-desktop: 1200px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            background-color: var(--color-background);
+            overflow-x: hidden; 
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: var(--max-width-desktop);
+            margin: 0 auto;
+            padding: 0 80px; 
+        }
+
+        /* ========================================================= */
+        /* 2. HEADER & NAVIGATION (Desktop) */
+        /* ========================================================= */
+        .header {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            max-width: var(--max-width-desktop);
+            margin: 0 auto; 
+            padding: 15px 80px; /* Reduced padding */
+            border-bottom: 1px solid #eee; 
+            background-color: var(--color-background); 
+            box-sizing: border-box; 
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 0.125rem 0.375rem;
+            margin-right: 0.5rem;
+            line-height: 1;
+        }
+
+        /* Nav Links (Desktop) */
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text-dark);
+            margin-left: 20px;
+            font-weight: 500;
+            padding: 5px 0; 
+            transition: color 0.2s;
+            position: relative;
+        }
+        
+        /* Nav CTA */
+        .nav-links a.nav-cta {
+            background-color: var(--color-primary); 
+            color: white; 
+            padding: 8px 15px 10px 15px; 
+            margin-left: 30px;
+            font-weight: 600;
+            border-radius: 0; 
+        }
+        .nav-links a.nav-cta:hover {
+            background-color: var(--color-primary-dark);
+            color: white;
+        }
+        
+        .nav-links a.active-link {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+        .nav-links a.active-link::after {
+            content: ''; 
+            position: absolute;
+            bottom: -5px; 
+            left: 0; 
+            right: 0; 
+            height: 2px; 
+            background-color: var(--color-primary); 
+        }
+
+        /* Hamburger Styling */
+        .hamburger {
+            display: none; 
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001; 
+        }
+
+        .hamburger .line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-text-dark);
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        /* State aktif untuk animasi X */
+        .hamburger.active .line:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .hamburger.active .line:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active .line:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* ========================================================= */
+        /* 3. ABOUT US SECTION */
+        /* ========================================================= */
+        .about-section {
+            padding: 40px 0 60px; /* Reduced top padding */
+            background-color: var(--color-background);
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 40px; /* Reduced margin */
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+
+        .about-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Content Grid */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 50px; /* Reduced margin */
+        }
+
+        .about-text h2 {
+            font-size: 1.8rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--color-text-light);
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Values Section */
+        .values-section {
+            margin: 50px 0; /* Reduced margin */
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 40px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: var(--color-light-gray);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .value-description {
+            color: var(--color-text-light);
+        }
+
+        /* Shape Keresmian Section */
+        .shape-section {
+            margin: 50px 0; /* Reduced margin */
+        }
+
+        .shape-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .shape-item {
+            background-color: var(--color-light-gray);
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .shape-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .shape-title {
+            font-size: 1.5rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 10px;
+        }
+
+        .shape-description {
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+        }
+
+        .shape-features {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .shape-features li {
+            padding: 8px 0;
+            color: var(--color-text-light);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .shape-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        /* Documents Section */
+        .documents-section {
+            margin: 50px 0; /* Reduced margin */
+            text-align: center;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .document-card {
+            background-color: var(--color-light-gray);
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .document-icon {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .document-title {
+            font-size: 1.3rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .document-description {
+            color: var(--color-text-light);
+            margin-bottom: 25px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        /* ========================================================= */
+        /* 4. RESPONSIVENESS (Media Queries) */
+        /* ========================================================= */
+        
+        /* Tablet & Desktop Kecil (<= 992px) */
+        @media(max-width: 992px) {
+            .container, .header { 
+                padding-left: 40px; 
+                padding-right: 40px; 
+            }
+            
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .shape-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Mobile (<= 768px) */
+        @media(max-width: 768px) {
+            .container { 
+                padding: 0 15px; 
+            }
+            .header {
+                padding: 12px 15px; /* Reduced padding for mobile */
+                position: relative; 
+            }
+            
+            .hamburger { 
+                display: block; 
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 55px; 
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--color-background);
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 20px;
+                transform: translateX(-100%); 
+                transition: transform 0.3s ease-in-out;
+                z-index: 1000;
+                box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+                overflow-y: auto; 
+            }
+            
+            .nav-links.active {
+                transform: translateX(0); 
+            }
+            
+            .nav-links a {
+                width: 100%;
+                margin: 0;
+                padding: 15px 20px;
+                border-bottom: 1px solid var(--color-light-gray);
+                text-align: left;
+            }
+
+            .nav-links a.nav-cta {
+                margin: 20px 20px;
+                width: calc(100% - 40px);
+                text-align: center;
+                padding: 12px 15px 12px 15px; 
+            }
+            
+            .about-section {
+                padding: 30px 0 50px; /* Reduced padding for mobile */
+            }
+            
+            .about-header {
+                margin-bottom: 30px; /* Reduced margin for mobile */
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-bottom: 40px; /* Reduced margin for mobile */
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .shape-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="#" class="logo"><span class="logo-icon">V</span>Stock</a>
+        
+        <div class="hamburger" id="hamburger-menu">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        
+        <nav class="nav-links" id="nav-links">
+            <a href="home.html">Home</a>
+            <a href="investview.html">InvestView</a>
+            <a href="berita.html">Berita</a>
+            <a href="tentangkami.html" class="active-link">Tentang Kami</a>
+            <a href="helpcall.html">Help Call</a>
+            <a href="login.html" class="nav-cta">Masuk/Daftar</a>
+        </nav>
+    </header>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-header">
+                <h1 class="about-title">Tentang VStock</h1>
+                <p class="about-subtitle">Platform investasi saham yang menghadirkan kemudahan, keamanan, dan edukasi bagi semua kalangan investor.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Visi Kami</h2>
+                    <p>Menjadi platform investasi saham terdepan di Indonesia yang dapat diakses oleh semua kalangan, dari investor pemula hingga profesional. Kami percaya bahwa investasi saham haruslah mudah, aman, dan dapat dipahami oleh siapa saja.</p>
+                    
+                    <h2>Misi Kami</h2>
+                    <p>Menyediakan platform investasi yang user-friendly dengan teknologi terkini, memberikan edukasi finansial yang komprehensif, dan membangun komunitas investor yang saling mendukung dalam perjalanan investasi mereka.</p>
+                    
+                    <p></p>
+                </div>
+                <div class="about-image">
+                    <img src="tentangkami.jpg" alt=" VStock">
+                </div>
+            </div>
+            
+            <div class="values-section">
+                <h2 class="section-title">Nilai-Nilai Kami</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon"></div>
+                        <h3 class="value-title">Transparansi</h3>
+                        <p class="value-description">Kami berkomitmen untuk memberikan informasi yang jelas dan jujur tentang semua aspek platform kami, termasuk biaya, risiko, dan kinerja.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"></div>
+                        <h3 class="value-title">Keamanan</h3>
+                        <p class="value-description">Dana dan data pribadi Anda dilindungi dengan teknologi keamanan terkini.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"></div>
+                        <h3 class="value-title">Edukasi</h3>
+                        <p class="value-description">Kami percaya bahwa investor yang terdidik adalah investor yang sukses. Itulah mengapa kami menyediakan berbagai materi edukasi.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="shape-section">
+                <h2 class="section-title">Shape Keresmian Kami</h2>
+                <div class="shape-grid">
+                    <div class="shape-item">
+                        <h3 class="shape-title">Struktur Organisasi</h3>
+                        <p class="shape-description">VStock memiliki struktur organisasi yang jelas dan terorganisir dengan baik untuk memastikan kelancaran operasional dan pelayanan kepada pengguna.</p>
+                        <ul class="shape-features">
+                            <li>Departemen Teknologi dan Pengembangan</li>
+                            <li>Departemen Analisis dan Riset</li>
+                            <li>Departemen Edukasi dan Komunitas</li>
+                            <li>Departemen Layanan Pelanggan</li>
+                            <li>Departemen Kepatuhan dan Regulasi</li>
+                        </ul>
+                    </div>
+                    <div class="shape-item">
+                        <h3 class="shape-title">Legalitas dan Regulasi</h3>
+                        <p class="shape-description">Sebagai platform investasi yang bertanggung jawab, VStock beroperasi dengan mengikuti semua regulasi yang berlaku di Indonesia.</p>
+                        <ul class="shape-features">
+                            <li>Terdaftar dan diawasi Jasa Keuangan Cahaya.co</li>
+                            <li>Berkolaborasi dengan Kustodian terpercaya</li>
+                            <li>Mematuhi aturan pasar modal Indonesia</li>
+                            <li>Sertifikasi keamanan siber </li>
+                            <li>Privasi data pengguna yang terjamin</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="documents-section">
+                <h2 class="section-title">Bukti Keresmian</h2>
+                <p>Berikut adalah dokumen-dokumen resmi yang menjadi bukti legalitas dan keresmian VStock sebagai platform investasi saham terpercaya di Indonesia.</p>
+                
+                <div class="documents-grid">
+                    <div class="document-card">
+                        <div class="document-icon">📄</div>
+                        <h3 class="document-title">Sertifikat Pendaftaran</h3>
+                        <p class="document-description">Dokumen resmi yang membuktikan bahwa VStock telah terdaftar dan diawasi oleh Pemerintah Republik Indonesia.</p>
+                        <a href="Surat Izin Usaha Vstock.pdf" class="download-btn" download>Unduh PDF</a>
+                    </div>
+                    
+                    <div class="document-card">
+                        <div class="document-icon">📋</div>
+                        <h3 class="document-title">Dokument Keamanan Keuangan</h3>
+                        <p class="document-description">Akta notaris yang menyatakan legalitas pendirian PT VStock Indonesia sebagai perusahaan yang bergerak di bidang teknologi finansial.</p>
+                        <a href="SURAT PERIZINAN KEUANGAN.pdf" class="download-btn" download>Unduh PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        // Logika 1: Hamburger Menu Toggle
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active'); 
+            document.body.classList.toggle('no-scroll');
+        });
+        
+        // Logika 2: Tutup menu saat link diklik (di mobile)
+        document.querySelectorAll('#nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
+    </script>
+
+</body>
+</html>

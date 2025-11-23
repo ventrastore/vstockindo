@@ -1,0 +1,299 @@
+/* ========================================================= */
+/* 1. GLOBAL STYLES & RESET */
+/* ========================================================= */
+/* Variabel CSS: Tempat terbaik untuk mengubah skema warna dan ukuran dasar */
+:root {
+    --color-primary: #CC0000;    /* Warna Utama: Merah (VStock) */
+    --color-primary-dark: #990000; /* Warna Merah lebih gelap */
+    --color-text-dark: #333;
+    --color-text-light: #555;
+    --color-background: #ffffff;
+    --color-light-gray: #f7f7f7;
+    --color-success: #10B981; /* Hijau untuk harga naik */
+    --color-danger: #EF4444;   /* Merah untuk harga turun */
+    --max-width-desktop: 1200px; /* Lebar maksimal konten */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    background-color: var(--color-background);
+    overflow-x: hidden; 
+}
+
+body.no-scroll {
+    /* Digunakan JS untuk mengunci scroll saat menu mobile terbuka */
+    overflow: hidden;
+}
+
+.container {
+    /* Mengatur lebar maksimum dan pemusatan konten di desktop */
+    max-width: var(--max-width-desktop);
+    margin: 0 auto;
+    padding: 0 80px; 
+}
+
+/* ========================================================= */
+/* 2. HEADER & NAVIGATION */
+/* ========================================================= */
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    max-width: var(--max-width-desktop);
+    margin: 0 auto; 
+    padding: 20px 80px; 
+    border-bottom: 1px solid #eee; 
+    background-color: var(--color-background); 
+    box-sizing: border-box; 
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.logo-icon {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.125rem 0.375rem;
+    margin-right: 0.5rem;
+    line-height: 1;
+}
+
+/* Nav Links (Desktop) */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-text-dark);
+    margin-left: 20px;
+    font-weight: 500;
+    padding: 5px 0; 
+    transition: color 0.2s;
+    position: relative;
+}
+
+/* Nav CTA */
+.nav-links a.nav-cta {
+    background-color: var(--color-primary); 
+    color: white; 
+    padding: 8px 15px 10px 15px; 
+    margin-left: 30px;
+    font-weight: 600;
+    border-radius: 0; 
+}
+
+.nav-links a.active-link {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+.nav-links a.active-link::after {
+    content: ''; 
+    position: absolute;
+    bottom: -5px; 
+    left: 0; 
+    right: 0; 
+    height: 2px; 
+    background-color: var(--color-primary); 
+}
+
+/* Hamburger Styling & Animasi */
+.hamburger {
+    display: none; 
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001; 
+}
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text-dark);
+    margin: 4px 0;
+    transition: 0.4s; 
+}
+/* State aktif untuk animasi X */
+.hamburger.active .line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.hamburger.active .line:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active .line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* ========================================================= */
+/* 3. INVESTVIEW SECTION (Rapat) */
+/* ========================================================= */
+.investview-section {
+    background-color: var(--color-background); 
+    padding: 20px 0 50px 0; 
+    text-align: center;
+}
+
+.investview-section h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: 5px;
+}
+
+.investview-section p.subtitle {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    margin-bottom: 30px;
+}
+
+.stock-grid {
+    /* Menggunakan CSS Grid untuk tata letak kartu saham yang responsif */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; 
+    max-width: var(--max-width-desktop);
+    margin: 0 auto;
+}
+
+/* Stock Card */
+.stock-card {
+    padding: 25px;
+    border-radius: 12px;
+    background-color: var(--color-background);
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.stock-info h3 {
+    font-size: 1.6rem;
+    margin: 0;
+    font-weight: 700;
+    color: var(--color-primary-dark); 
+}
+
+.stock-info p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+.stock-price .current-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    text-align: right;
+    line-height: 1;
+}
+
+.stock-price .change-indicator {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-top: 5px;
+    float: right;
+}
+
+/* Change Indicator Colors */
+.change-indicator.positive {
+    color: var(--color-success);
+    background-color: rgba(16, 185, 129, 0.15);
+}
+
+.change-indicator.negative {
+    color: var(--color-danger);
+    background-color: rgba(239, 68, 68, 0.15);
+}
+
+.change-indicator.neutral {
+    color: var(--color-text-light);
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Sparkline Chart */
+.stock-chart-container {
+    height: 80px; 
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 15px;
+}
+
+.sparkline-svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================================= */
+/* 4. RESPONSIVENESS */
+/* ========================================================= */
+
+/* Tablet & Desktop Kecil (<= 992px) */
+@media(max-width: 992px) {
+    .container, .header { 
+        padding-left: 40px; 
+        padding-right: 40px; 
+    }
+    .stock-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+/* Mobile (<= 768px) */
+@media(max-width: 768px) {
+    .container { padding: 0 15px; }
+    .header { padding: 15px 15px; position: relative; }
+    .investview-section { 
+        padding: 15px 0 30px 0; 
+    }
+
+    /* Navbar Mobile Logic */
+    .hamburger { display: block; }
+
+    .nav-links {
+        position: fixed; top: 55px; left: 0; width: 100%; height: 100%;
+        background-color: var(--color-background); flex-direction: column;
+        align-items: flex-start; padding-top: 20px;
+        transform: translateX(-100%); transition: transform 0.3s ease-in-out;
+        z-index: 1000; box-shadow: 2px 0 5px rgba(0,0,0,0.1); overflow-y: auto; 
+    }
+
+    .nav-links.active { transform: translateX(0); }
+
+    .nav-links a {
+        width: 100%; margin: 0; padding: 15px 20px;
+        border-bottom: 1px solid var(--color-light-gray); text-align: left;
+    }
+
+    .nav-links a.nav-cta {
+        margin: 20px 20px; width: calc(100% - 40px); text-align: center;
+        padding: 12px 15px 12px 15px; 
+    }
+
+    .stock-grid { 
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+}

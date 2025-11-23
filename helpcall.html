@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Call - VStock</title>
+    <style>
+        /* ========================================================= */
+        /* 1. GLOBAL STYLES & RESET */
+        /* ========================================================= */
+        :root {
+            --color-primary: #CC0000;    
+            --color-primary-dark: #990000; 
+            --color-text-dark: #333;
+            --color-text-light: #555;
+            --color-background: #ffffff;
+            --color-light-gray: #f7f7f7;
+            --color-success: #28a745;
+            --max-width-desktop: 1200px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            background-color: var(--color-background);
+            overflow-x: hidden; 
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: var(--max-width-desktop);
+            margin: 0 auto;
+            padding: 0 80px; 
+        }
+
+        /* ========================================================= */
+        /* 2. HEADER & NAVIGATION (Desktop) */
+        /* ========================================================= */
+        .header {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            max-width: var(--max-width-desktop);
+            margin: 0 auto; 
+            padding: 15px 80px; 
+            border-bottom: 1px solid #eee; 
+            background-color: var(--color-background); 
+            box-sizing: border-box; 
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 0.125rem 0.375rem;
+            margin-right: 0.5rem;
+            line-height: 1;
+        }
+
+        /* Nav Links (Desktop) */
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text-dark);
+            margin-left: 20px;
+            font-weight: 500;
+            padding: 5px 0; 
+            transition: color 0.2s;
+            position: relative;
+        }
+        
+        /* Nav CTA */
+        .nav-links a.nav-cta {
+            background-color: var(--color-primary); 
+            color: white; 
+            padding: 8px 15px 10px 15px; 
+            margin-left: 30px;
+            font-weight: 600;
+            border-radius: 0; 
+        }
+        .nav-links a.nav-cta:hover {
+            background-color: var(--color-primary-dark);
+            color: white;
+        }
+        
+        .nav-links a.active-link {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+        .nav-links a.active-link::after {
+            content: ''; 
+            position: absolute;
+            bottom: -5px; 
+            left: 0; 
+            right: 0; 
+            height: 2px; 
+            background-color: var(--color-primary); 
+        }
+
+        /* Hamburger Styling */
+        .hamburger {
+            display: none; 
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001; 
+        }
+
+        .hamburger .line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-text-dark);
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        /* State aktif untuk animasi X */
+        .hamburger.active .line:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .hamburger.active .line:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active .line:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* ========================================================= */
+        /* 3. HELP CALL SECTION */
+        /* ========================================================= */
+        .help-section {
+            padding: 40px 0 60px;
+            background-color: var(--color-background);
+        }
+
+        .help-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .help-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+
+        .help-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Contact Methods Grid */
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            background-color: var(--color-light-gray);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .contact-title {
+            font-size: 1.3rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 40px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--color-light-gray);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f0f0f0;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--color-text-light);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px 20px;
+            max-height: 500px;
+        }
+
+        /* ========================================================= */
+        /* 4. RESPONSIVENESS (Media Queries) */
+        /* ========================================================= */
+        
+        /* Tablet & Desktop Kecil (<= 992px) */
+        @media(max-width: 992px) {
+            .container, .header { 
+                padding-left: 40px; 
+                padding-right: 40px; 
+            }
+            
+            .contact-methods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Mobile (<= 768px) */
+        @media(max-width: 768px) {
+            .container { 
+                padding: 0 15px; 
+            }
+            .header {
+                padding: 12px 15px;
+                position: relative; 
+            }
+            
+            .hamburger { 
+                display: block; 
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 55px; 
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--color-background);
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 20px;
+                transform: translateX(-100%); 
+                transition: transform 0.3s ease-in-out;
+                z-index: 1000;
+                box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+                overflow-y: auto; 
+            }
+            
+            .nav-links.active {
+                transform: translateX(0); 
+            }
+            
+            .nav-links a {
+                width: 100%;
+                margin: 0;
+                padding: 15px 20px;
+                border-bottom: 1px solid var(--color-light-gray);
+                text-align: left;
+            }
+
+            .nav-links a.nav-cta {
+                margin: 20px 20px;
+                width: calc(100% - 40px);
+                text-align: center;
+                padding: 12px 15px 12px 15px; 
+            }
+            
+            .help-section {
+                padding: 30px 0 50px;
+            }
+            
+            .help-header {
+                margin-bottom: 40px;
+            }
+            
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .help-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="home.html" class="logo"><span class="logo-icon">V</span>Stock</a>
+        
+        <div class="hamburger" id="hamburger-menu">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        
+        <nav class="nav-links" id="nav-links">
+            <a href="home.html">Home</a>
+            <a href="investview.html">InvestView</a>
+            <a href="berita.html">Berita</a>
+            <a href="tentangkami.html">Tentang Kami</a>
+            <a href="helpcall.html" class="active-link">Help Call</a>
+            <a href="login.html" class="nav-cta">Masuk/Daftar</a>
+        </nav>
+    </header>
+
+    <section class="help-section">
+        <div class="container">
+            <div class="help-header">
+                <h1 class="help-title">Help Call VStock</h1>
+                <p class="help-subtitle">Kami siap membantu Anda. Pilih metode yang paling nyaman untuk menghubungi tim support kami.</p>
+            </div>
+            
+            <!-- Contact Methods -->
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <div class="contact-icon"></div>
+                    <h3 class="contact-title">Telegram</h3>
+                    <p class="contact-info">Hubungi kami melalui Telegram untuk bantuan cepat dan responsif</p>
+                    <div class="contact-info">
+                        <strong>@cahaya_co_Admin</strong><br>
+                        (Fast Response)
+                    </div>
+                    <a href="https://t.me/cahaya_co_Admin" target="_blank" class="contact-btn">Chat di Telegram</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon"></div>
+                    <h3 class="contact-title">Live Chat</h3>
+                    <p class="contact-info">Chat langsung dengan cs kami</p>
+                    <div class="contact-info">
+                        <strong>Online</strong><br>
+                        08:00 - 22:00 WIB
+                    </div>
+                    <a href="#" class="contact-btn" id="live-chat-btn">Mulai Chat</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon"></div>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-info">Kirim pertanyaan detail melalui email</p>
+                    <div class="contact-info">
+                        <strong>vstockservice@gmail.com</strong><br>
+                        Response dalam 2 jam
+                    </div>
+                    <a href="vstockservice@gmail.com" class="contact-btn">Salin </a>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2 class="section-title">Pertanyaan Umum (FAQ)</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">Bagaimana cara membuka halaman VStock?</div>
+                        <div class="faq-answer">
+                            <p></p>
+                            <ul>
+                                <li>Website asli VStock hanya https://vstock.vercel.app/</li>
+                               
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Apa saja dokumen yang diperlukan untuk verifikasi saat pendaftaran?</div>
+                        <div class="faq-answer">
+                            <p></p>
+                            <ul>
+                                <li>Kami hanya memerlukan nama lengkap Anda dan tidak memerlukan data apapun. </li>
+                              
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Bagaimana cara melakukan deposit ke akun VStock?</div>
+                        <div class="faq-answer">
+                            <p>Semua deposit dilakukan melalui admin telegram resmi kami</p>
+                            <p> Anda dapat melakukan deposit melalui beberapa metode:</p>
+                            <ul>
+                                <li><strong>Transfer Bank:</strong> BCA, BNI, Mandiri, BRI, dan bank lainnya</li>
+                                <li><strong>Virtual Account:</strong> Tersedia untuk bank partner</li>
+                                <li><strong>E-Wallet:</strong> OVO, Gopay, Dana, LinkAja</li>
+                            </ul>
+                            <p>Deposit akan diproses otomatis dalam waktu 5-10 menit.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Berapa biaya transaksi di VStock?</div>
+                        <div class="faq-answer">
+                            <p>VStock menerapkan biaya transaksi yang kompetitif:</p>
+                            <ul>
+                                <li>Biaya pembelian saham : Gratis</li>
+                                <li>Biaya perpindahan saham : 0.15% dari nilai transaksi</li>
+                                <li>Biaya penarikan : 5% dari total aset per transaksi (minimal 10.000 Rp)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        // Logika 1: Hamburger Menu Toggle
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active'); 
+            document.body.classList.toggle('no-scroll');
+        });
+        
+        // Logika 2: Tutup menu saat link diklik (di mobile)
+        document.querySelectorAll('#nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+        });
+
+        // FAQ Accordion Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Live Chat Button
+        document.getElementById('live-chat-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Fitur Live Chat akan segera tersedia. Untuk sementara, silakan hubungi kami melalui Telegram atau email.');
+        });
+    </script>
+
+</body>
+</html>

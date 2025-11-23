@@ -1,205 +1,215 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VStock | Platform Investasi</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root {
-    --primary: #000000;
-    --text: #000000;
-    --background: #ffffff;
-    --border: #e5e7eb;
-    --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VStock Landing Page - Professional Layout</title>
+    <style>
+        /* ========================================================= */
+        /* 1. GLOBAL STYLES & RESET */
+        /* ========================================================= */
+        :root {
+            /* Definisi Variabel Warna untuk konsistensi */
+            --color-primary: #CC0000;    /* Merah Solid */
+            --color-primary-dark: #990000; /* Merah Hover */
+            --color-text-dark: #333;
+            --color-text-light: #555;
+            --color-background: #ffffff;
+            --max-width-desktop: 1200px;
+        }
 
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            background-color: var(--color-background);
+            overflow-x: hidden;
+            font-size: 16px; 
+        }
 
-body { background: var(--background); color: var(--text); line-height:1.6; overflow-x:hidden; }
+        /* ========================================================= */
+        /* 2. HEADER & LOGO */
+        /* ========================================================= */
+        .header {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px 80px;
+            max-width: var(--max-width-desktop);
+            margin: 0 auto;
+        }
 
-.container { max-width:1280px; margin:0 auto; padding:0 16px; }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
 
-/* Header */
-header {
-    padding:16px 0;
-    position:sticky;
-    top:0;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    /* border-bottom:1px solid var(--border); <-- dihapus */
-    z-index:100;
-    box-shadow: none; /* opsional: pastikan tidak ada bayangan juga */
-}
+        .logo-icon {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            font-size: 1rem;
+            line-height: 1;
+        }
 
-.header-content {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
+        /* ========================================================= */
+        /* 3. HERO SECTION */
+        /* ========================================================= */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 100px 80px;
+            max-width: var(--max-width-desktop);
+            margin: 0 auto;
+        }
 
-.logo {
-    font-size:20px;
-    font-weight:800;
-    color: var(--text);
-    text-decoration:none;
-}
+        .hero-content {
+            flex: 1;
+            max-width: 50%;
+            padding-right: 50px; 
+        }
 
-.header-actions .btn {
-    padding:10px 20px;
-    border-radius:8px;
-    font-weight:600;
-    font-size:14px;
-    cursor:pointer;
-    text-decoration:none;
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    transition: all 0.3s;
-    background: var(--primary);
-    color: white;
-    z-index: 10;
-    position: relative;
-}
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+            color: var(--color-text-dark);
+        }
 
-.header-actions .btn:hover { transform:translateY(-2px); }
+        /* Grup untuk menampung beberapa baris deskripsi (paragraf) */
+        .hero-description-group {
+            margin-bottom: 2.5rem; /* Jarak total grup ke tombol */
+        }
+        
+        .hero-description-group p {
+            font-size: 1.125rem;
+            color: var(--color-text-light);
+            line-height: 1.7;
+            margin-bottom: 1rem; /* Jarak antar paragraf dalam grup */
+        }
 
-/* Hero */
-.hero { padding:40px 0; position:relative; overflow:hidden; }
+        /* Hapus margin bawah pada paragraf terakhir dalam grup */
+        .hero-description-group p:last-child {
+            margin-bottom: 0;
+        }
 
-.hero-content { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
 
-.hero-text h1 { font-size:48px; font-weight:800; line-height:1.2; margin-bottom:16px; color: var(--text); }
+        /* STYLING TOMBOL "MASUK" (Call to Action - CTA) */
+        .masuk-button {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none; 
+            display: inline-block; 
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3);
+        }
 
-.hero-text p { font-size:18px; color: var(--text); margin-bottom:20px; max-width:100%; }
+        .masuk-button:hover {
+            background-color: var(--color-primary-dark);
+            box-shadow: 0 6px 16px rgba(204, 0, 0, 0.4);
+        }
 
-.hero-stats { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:20px; }
+        .hero-image {
+            flex: 1;
+            max-width: 50%;
+            text-align: right;
+            position: relative;
+            min-height: 300px; 
+        }
 
-.stat { display:flex; flex-direction:column; color: var(--text); }
+        /* ========================================================= */
+        /* 4. RESPONSIVENESS */
+        /* ========================================================= */
 
-.stat-value { font-size:24px; font-weight:700; color: var(--text); }
+        /* Tablet dan Layar Menengah (Max 992px) */
+        @media (max-width: 992px) {
+            .header, .hero {
+                padding: 20px 40px;
+            }
+            .hero-content {
+                max-width: 65%;
+            }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+        }
 
-.stat-label { font-size:12px; color: var(--text); margin-top:4px; }
-
-/* Floating Cards */
-.hero-visual { position:relative; display:flex; justify-content:center; align-items:center; z-index:1; flex-wrap:wrap; gap:16px; }
-
-.floating-card {
-    width:240px; height:140px;
-    background:white;
-    border-radius:16px;
-    box-shadow: var(--shadow-lg);
-    padding:16px;
-    position:relative;
-    display:flex; flex-direction:column; justify-content:space-between;
-    border-top:4px solid var(--primary);
-    color: var(--text);
-}
-
-.card-header { display:flex; justify-content:space-between; align-items:center; }
-
-.card-title { font-weight:600; font-size:14px; color: var(--text); }
-
-.card-value { font-size:20px; font-weight:700; color: var(--text); }
-
-.card-change { font-size:12px; color: var(--text); display:flex; align-items:center; gap:4px; }
-
-@keyframes float { 0%,100%{transform:translateY(0) rotate(-3deg);} 50%{transform:translateY(-6px) rotate(-3deg);} }
-@keyframes float2 { 0%,100%{transform:translateY(0) rotate(3deg);} 50%{transform:translateY(-6px) rotate(3deg);} }
-
-.card-1 { animation:float 6s ease-in-out infinite; }
-.card-2 { animation:float2 7s ease-in-out infinite; }
-
-/* Responsive */
-@media(max-width:1024px) {
-    .hero-content{grid-template-columns:1fr; gap:40px;}
-    .hero-text h1{font-size:36px;}
-    .hero-stats{flex-direction:row; justify-content:flex-start; gap:12px;}
-}
-
-@media(max-width:768px) {
-    .hero-text h1{font-size:28px;}
-    .hero-text p{font-size:16px;}
-    .hero-stats{flex-direction:column; gap:12px;}
-    .floating-card{width:200px; height:120px; padding:12px;}
-    .card-title{font-size:12px;}
-    .card-value{font-size:18px;}
-    .card-change{font-size:10px;}
-}
-
-@media(max-width:480px) {
-    header { padding:12px 0; }
-    .logo { font-size:18px; }
-    .header-actions .btn { padding:8px 16px; font-size:12px; }
-    .hero-text h1 { font-size:24px; }
-    .hero-text p { font-size:14px; }
-    .floating-card { width:160px; height:100px; padding:8px; }
-    .card-title { font-size:11px; }
-    .card-value { font-size:16px; }
-    .card-change { font-size:9px; }
-    .hero-stats { gap:8px; }
-}
-</style>
+        /* Mobile (Max 768px) */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+            .hero {
+                flex-direction: column;
+                padding: 40px 20px;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+                padding-right: 0;
+            }
+            .hero-image {
+                display: none;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            /* Menyesuaikan jarak antar grup deskripsi di mobile */
+            .hero-description-group {
+                margin-bottom: 2rem;
+            }
+            .hero-description-group p {
+                margin-bottom: 0.75rem; /* Jarak antar paragraf di mobile */
+            }
+            .masuk-button {
+                max-width: 250px; 
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-<div class="container">
-    <div class="header-content">
-        <a href="#" class="logo">VStock by Cahaya Citra</a>
-        <div class="header-actions">
-            <a href="pro.html" class="btn btn-primary">Ubah ke Pro</a>
-            <a href="home.html" class="btn btn-primary">Mulai</a>
-        </div>
-    </div>
-</div>
-</header>
+    <header class="header">
+        <a href="#" class="logo">
+            <span class="logo-icon">V</span>Stock
+        </a>
+    </header>
 
-<section class="hero">
-<div class="container">
-    <div class="hero-content">
-        <div class="hero-text">
-            <h1>Kelola Keuangan Digital Anda dengan Aman dan Cerdas</h1>
-            <p>Dengan VStock, investasi Anda terlindungi dan mudah dikelola kapan saja.</p>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-value">500 User</div>
-                    <div class="stat-label">Investor Puas</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">99,9%</div>
-                    <div class="stat-label">Ketersediaan Sistem</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">100%</div>
-                    <div class="stat-label">Aset Terkelola dan Aman</div>
-                </div>
+    <main class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome To VStock</h1>
+            
+            <div class="hero-description-group">
+                <p>
+                    Jangan tunda lagi masa depan finansial Anda! Bergabunglah bersama VStock hari ini 
+                    dan mulailah investasi reksadana Anda dengan mudah dan aman.
+                </p>
+                <p>
+                    Kami hadir untuk membantu Anda mencapai tujuan keuangan, didukung oleh platform yang stabil dan terpercaya.
+                </p>
             </div>
+            
+            <a href="home.html" class="masuk-button">Gabung</a>
         </div>
-
-        <div class="hero-visual">
-            <div class="floating-card card-1">
-                <div class="card-header">
-                    <div class="card-title">Ventra Stock</div>
-                    <i class="fab fa-ethereum"></i>
-                </div>
-                <div class="card-value">11.928 Rp</div>
-                <div class="card-change"><i class="fas fa-arrow-up"></i> +5,2% Bulan Ini</div>
+        <div class="hero-image">
             </div>
-
-            <div class="floating-card card-2">
-                <div class="card-header">
-                    <div class="card-title">Prima Kelas D</div>
-                    <i class="fab fa-ethereum"></i>
-                </div>
-                <div class="card-value">18.105 Rp</div>
-                <div class="card-change"><i class="fas fa-arrow-up"></i> +2,7% Bulan Ini</div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
+    </main>
+    
 </body>
 </html>

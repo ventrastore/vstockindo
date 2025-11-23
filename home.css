@@ -1,0 +1,467 @@
+/* ========================================================= */
+/* 1. GLOBAL STYLES & RESET */
+/* ========================================================= */
+:root {
+    --color-primary: #CC0000;    
+    --color-primary-dark: #333; 
+    --color-text-dark: #333;
+    --color-text-light: #555;
+    --color-background: #ffffff;
+    --color-light-gray: #f7f7f7;
+    --color-success: #10B981;
+    --color-danger: #EF4444;
+    --max-width-desktop: 1200px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    background-color: var(--color-background);
+    overflow-x: hidden; 
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.container {
+    max-width: var(--max-width-desktop);
+    margin: 0 auto;
+    padding: 0 80px; 
+}
+
+/* ========================================================= */
+/* 2. HEADER & NAVIGATION (Desktop) */
+/* ========================================================= */
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    max-width: var(--max-width-desktop);
+    margin: 0 auto; 
+    padding: 20px 80px; 
+    border-bottom: 1px solid #eee; 
+    background-color: var(--color-background); 
+    box-sizing: border-box; 
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.logo-icon {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.125rem 0.375rem;
+    margin-right: 0.5rem;
+    line-height: 1;
+}
+
+/* Nav Links (Desktop) */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-text-dark);
+    margin-left: 20px;
+    font-weight: 500;
+    padding: 5px 0; 
+    transition: color 0.2s;
+    position: relative;
+}
+
+/* Nav CTA */
+.nav-links a.nav-cta {
+    background-color: var(--color-primary); 
+    color: white; 
+    padding: 8px 15px 10px 15px; 
+    margin-left: 30px;
+    font-weight: 600;
+    border-radius: 0; 
+}
+.nav-links a.nav-cta:hover {
+    background-color: var(--color-primary-dark);
+    color: white;
+}
+
+.nav-links a.active-link {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+.nav-links a.active-link::after {
+    content: ''; 
+    position: absolute;
+    bottom: -5px; 
+    left: 0; 
+    right: 0; 
+    height: 2px; 
+    background-color: var(--color-primary); 
+}
+
+/* Hamburger Styling */
+.hamburger {
+    display: none; 
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001; 
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text-dark);
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* State aktif untuk animasi X */
+.hamburger.active .line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.hamburger.active .line:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active .line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+/* ========================================================= */
+/* 3. FEATURE SECTION & ACCORDION STYLE */
+/* ========================================================= */
+.features-section {
+    background-color: var(--color-background); 
+    padding: 40px 0 80px 0; 
+    text-align: center;
+    position: relative; 
+    z-index: 1; 
+}
+
+/* Heading Shape (Tombol Toggle) */
+.heading-shape {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    background-color: var(--color-background); 
+    padding: 20px 40px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px; 
+    margin: 0 auto; 
+    border: 1px solid #eee; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+}
+
+.heading-shape:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.features-title {
+    font-size: 2rem; 
+    font-weight: 700;
+    color: var(--color-primary); 
+    margin: 0;
+}
+
+.features-action-hint {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 4px;
+    color: var(--color-primary-dark);
+    text-align: left;
+}
+
+.toggle-icon {
+    color: var(--color-primary);
+    transition: transform 0.3s;
+    font-size: 1.5rem;
+    display: flex; 
+    align-items: center;
+}
+
+.heading-shape.open .toggle-icon {
+     transform: rotate(180deg);
+}
+
+/* ========================================================= */
+/* 4. CONTENT GRIDS (Fitur & Berita) */
+/* ========================================================= */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding-top: 25px; 
+    padding-bottom: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.5s ease-in-out;
+}
+
+#news-grid {
+    grid-template-columns: repeat(3, 1fr); 
+}
+
+.hide-grid {
+    opacity: 0;
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    overflow: hidden; 
+}
+
+/* Styling untuk Kartu Fitur (sudah ada) */
+.feature-card {
+    padding: 30px;
+    border-radius: 15px; 
+    text-align: center; 
+    background-color: var(--color-background); 
+    border: 1px solid #eee; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); 
+}
+
+.feature-icon-wrapper {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px auto;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.feature-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* BARU: Styling khusus untuk kartu berita */
+.news-card {
+    display: flex; /* Menggunakan flexbox untuk layout gambar-teks */
+    align-items: center; /* Vertically center content */
+    text-align: left; /* Teks rata kiri */
+    padding: 0; /* Hapus padding default feature-card */
+    border-radius: 0; /* Sudut lancip */
+    overflow: hidden; /* Penting untuk gambar */
+    background-color: var(--color-background);
+    border: 1px solid #eee; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); 
+}
+
+.news-card .news-image-wrapper {
+    flex: 0 0 50%; /* Gambar mengambil 50% lebar */
+    height: 100%; /* Agar gambar mengisi tinggi kartu */
+    overflow: hidden;
+}
+
+.news-card .news-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Pastikan gambar mengisi ruang tanpa terdistorsi */
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-image-wrapper img {
+    transform: scale(1.05); /* Efek zoom hover pada gambar */
+}
+
+.news-card .news-content {
+    flex: 1; /* Konten teks mengambil sisa lebar */
+    padding: 20px 25px; /* Padding untuk teks di dalam kartu */
+}
+
+.news-card .news-content h3 {
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--color-primary-dark);
+}
+
+.news-card .news-content p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    color: var(--color-text-light);
+}
+
+/* Stock Tag untuk berita */
+.stock-tag {
+    background: var(--color-primary);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+/* Price Info */
+.price-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 0.85rem;
+}
+
+.current-price {
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.price-change {
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.price-change.positive {
+    color: var(--color-success);
+    background-color: rgba(16, 185, 129, 0.15);
+}
+
+.price-change.negative {
+    color: var(--color-danger);
+    background-color: rgba(239, 68, 68, 0.15);
+}
+
+/* ========================================================= */
+/* 5. RESPONSIVENESS (Media Queries) */
+/* ========================================================= */
+
+/* Tablet & Desktop Kecil (<= 992px) */
+@media(max-width: 992px) {
+    .container, .header { 
+        padding-left: 40px; 
+        padding-right: 40px; 
+    }
+    
+    .features-grid, #news-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    /* Untuk kartu berita di tablet, buat jadi vertikal agar gambar tidak terlalu kecil */
+    .news-card {
+        flex-direction: column; /* Gambar di atas, teks di bawah */
+    }
+    .news-card .news-image-wrapper {
+        flex: none; /* Reset flex */
+        width: 100%;
+        height: 200px; /* Tinggi tetap untuk gambar */
+    }
+    .news-card .news-content {
+        padding: 20px;
+    }
+}
+
+/* Mobile (<= 768px) */
+@media(max-width: 768px) {
+    .container { 
+        padding: 0 15px; 
+    }
+    .header {
+        padding: 15px 15px;
+        position: relative; 
+    }
+    
+    .hamburger { 
+        display: block; 
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 55px; 
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-background);
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 20px;
+        transform: translateX(-100%); 
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        overflow-y: auto; 
+    }
+    
+    .nav-links.active {
+        transform: translateX(0); 
+    }
+    
+    .nav-links a {
+        width: 100%;
+        margin: 0;
+        padding: 15px 20px;
+        border-bottom: 1px solid var(--color-light-gray);
+        text-align: left;
+    }
+
+    .nav-links a.nav-cta {
+        margin: 20px 20px;
+        width: calc(100% - 40px);
+        text-align: center;
+        padding: 12px 15px 12px 15px; 
+    }
+    
+    .features-section {
+        padding: 15px 0 40px 0; 
+    }
+
+    .features-grid, #news-grid { 
+        grid-template-columns: 1fr; 
+        gap: 15px;
+        padding-top: 15px;
+    }
+    
+    .heading-shape { 
+        max-width: 100%; 
+        padding: 15px 20px; 
+        margin-top: 10px; 
+    }
+    
+    .features-title { font-size: 1.4rem; }
+    .feature-card { padding: 20px; }
+    .feature-icon-wrapper { width: 80px; height: 80px; }
+
+    /* Pastikan kartu berita tetap vertikal di mobile */
+    .news-card {
+        flex-direction: column;
+        border-radius: 0; /* Tetap lancip */
+    }
+    .news-card .news-image-wrapper {
+        width: 100%;
+        height: 150px; /* Tinggi gambar lebih kecil di mobile */
+    }
+    .news-card .news-content {
+        padding: 15px;
+    }
+}

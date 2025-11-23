@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Dashboard User - VStock</title>
+    <style>
+        /* 🎨 PALET WARNA MODERN */
+        :root {
+            --color-primary: #CC0000;          /* Merah Bendera */
+            --color-primary-dark: #990000;     /* Merah Hover */
+            --color-success: #198754;          /* Hijau Lebih Gelap */
+            --color-danger: #dc3545;
+            --color-bg-main: #f4f6f9;          /* Latar belakang sangat terang (Modern) */
+            --color-card-bg: #ffffff;
+            --color-text-dark: #212529;        /* Hitam legam untuk teks utama */
+            --color-text-muted: #6c757d;       /* Abu-abu untuk teks sekunder */
+            --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.05); /* Shadow ringan */
+            --shadow-lift: 0 8px 18px rgba(0, 0, 0, 0.1);   /* Shadow saat hover */
+        }
+
+        /* RESET & BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-bg-main);
+            padding: 20px;
+            color: var(--color-text-dark);
+        }
+
+        .dashboard-container { max-width: 1280px; margin: 0 auto; }
+        
+        /* 1. HEADER - CLEAN DAN DENGAN GRADASI */
+        header {
+            background: linear-gradient(90deg, var(--color-primary), #E83A3A); /* Gradasi Merah */
+            color: white;
+            padding: 18px 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-lift);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dashboard-logo { 
+            font-size: 2rem; 
+            font-weight: 700; 
+            color: white; 
+            text-decoration: none;
+        }
+        .logo-icon {
+            color: white; 
+            /* Hapus background merah di sini agar menyatu dengan header */
+            padding: 0 0.1rem; 
+            margin-right: 0.2rem; 
+            font-weight: 900;
+        }
+        
+        .user-action-group { display: flex; align-items: center; gap: 20px; }
+        .user-info-header { text-align: right; }
+        .user-info-header h1 { 
+            color: white; /* Teks putih di atas latar merah */
+            font-size: 1.25em; 
+            margin-bottom: 0; 
+            font-weight: 500;
+        }
+        .user-info-header p { font-size: 0.8em; color: rgba(255, 255, 255, 0.8); }
+
+        .logout-btn {
+            background-color: white; /* Tombol putih di header merah */
+            color: var(--color-primary);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 600;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .logout-btn:hover { background-color: #f0f0f0; }
+
+        /* 2. SUMMARY CARDS - MINIMALIS & CLEAN */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+        .summary-card {
+            background: var(--color-card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-subtle); /* Hapus border, pakai shadow */
+            transition: all 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .summary-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lift); }
+        
+        .summary-card p { 
+            font-size: 0.9em; 
+            color: var(--color-text-muted); 
+            margin-bottom: 15px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.8px;
+            font-weight: 500;
+        }
+        .summary-card h2 { 
+            font-size: 2.5em; 
+            margin: 0; 
+            color: var(--color-text-dark); 
+            font-weight: 700; 
+            letter-spacing: -0.5px;
+        }
+        
+        .metric-change { 
+            font-weight: 600; 
+            display: inline-flex; 
+            align-items: center; 
+            margin-top: 10px; 
+            gap: 6px; 
+            font-size: 1em;
+        }
+        .percent-up { color: var(--color-success); }
+        .percent-down { color: var(--color-danger); }
+        .metric-change svg { stroke-width: 4; } /* Tebalkan ikon panah */
+
+
+        /* 3. STOCK TABLE - STRIPED & CLEAN */
+        .content-section { margin-top: 30px; }
+        .content-section h3 {
+            border-bottom: none; /* Hapus border bawah */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: var(--color-text-dark);
+            font-size: 1.6em;
+            font-weight: 600;
+        }
+        .stock-table {
+            width: 100%; border-collapse: collapse; 
+            background: var(--color-card-bg); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: var(--shadow-subtle);
+        }
+        .stock-table th, .stock-table td {
+            padding: 15px 20px; 
+            text-align: left; 
+            border-bottom: 1px solid #f1f1f1;
+        }
+        .stock-table th { 
+            background-color: var(--color-bg-main); /* Header tabel abu-abu muda */
+            color: var(--color-text-muted); 
+            font-weight: 600; 
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+        .stock-table tr:nth-child(even) {
+            background-color: #fcfcfc; /* Striped rows */
+        }
+        .stock-table tr:last-child td { border-bottom: none; }
+        .stock-table tr:hover { background-color: #f0f0f0; }
+
+        /* ACCOUNT INFO SECTION */
+        .account-section { 
+            background: var(--color-card-bg); 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: var(--shadow-subtle);
+            margin-top: 30px;
+        }
+        .account-info-box {
+            background-color: #fef0f0; /* Merah muda sangat pucat */
+            border: 1px solid #f0cccc;
+            padding: 15px; border-radius: 8px;
+            display: none; 
+            margin-top: 15px;
+        }
+        .info-label { font-weight: bold; color: var(--color-primary); display: inline-block; width: 120px;}
+        .show-info-btn {
+            background: var(--color-primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-weight: 600;
+        }
+        .show-info-btn:hover { background: var(--color-primary-dark); }
+
+        /* --- MEDIA QUERY KHUSUS LAYAR KECIL (RESPONSIVE) --- */
+        @media (max-width: 992px) {
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            
+            /* Header Responsif HP */
+            header {
+                padding: 15px;
+                flex-direction: column; 
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .brand-section { width: 100%; }
+            .user-action-group {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+            }
+            .user-info-header { text-align: left; }
+            .logout-btn { padding: 8px 15px; }
+            
+            /* Summary Cards: Paksa 1 kolom di HP */
+            .summary-grid { grid-template-columns: 1fr; gap: 15px; }
+            .summary-card { padding: 20px; }
+            .summary-card h2 { font-size: 2em; }
+
+            /* Tabel: Gulir Horizontal */
+            .stock-table { display: block; overflow-x: auto; white-space: nowrap; }
+            .stock-table th, .stock-table td { padding: 10px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <header>
+            <div class="brand-section">
+                <a href="#" class="dashboard-logo"><span class="logo-icon">V</span>Stock</a>
+            </div>
+
+            <div class="user-action-group">
+                <div class="user-info-header">
+                    <h1 id="welcomeUser">Halo, user001</h1>
+                    <p>Dashboard Portofolio Anda</p>
+                </div>
+                <a href="login.html" class="logout-btn">Logout</a>
+            </div>
+        </header>
+        
+        <div class="summary-grid">
+            <div class="summary-card">
+                <p>Total Saldo (Cash)</p>
+                <h2 id="totalBalance">Rp 5.250.000</h2>
+            </div>
+            <div class="summary-card">
+                <p>Total Nilai Aset</p>
+                <h2 id="totalAsset">Rp 7.800.000</h2>
+                <span id="balanceChange" class="metric-change percent-up">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg> 
+                    +0.85% (Naik)
+                </span>
+            </div>
+            <div class="summary-card">
+                <p>Saham Aktif</p>
+                <h2 id="activeStocks">5</h2>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3>Portofolio Saham Anda</h3>
+            <table class="stock-table">
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Nama Saham</th>
+                        <th>Jumlah Lembar</th>
+                        <th>Harga Saat Ini (Rp)</th>
+                        <th>Perubahan Hari Ini (%)</th>
+                    </tr>
+                </thead>
+                <tbody id="stockTableBody">
+                    <tr><td>BBCA</td><td>Bank Central Asia</td><td>500 Lembar</td><td>9.500</td><td class="change-positive">+1.25%</td></tr>
+                    <tr><td>TLKM</td><td>Telkom Indonesia</td><td>1200 Lembar</td><td>4.200</td><td class="change-negative">-0.75%</td></tr>
+                    <tr><td>ADRO</td><td>Adaro Energy</td><td>2500 Lembar</td><td>3.100</td><td class="change-positive">+3.10%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section account-section">
+            <h3>Informasi Akun Anda</h3>
+            <button class="show-info-btn" onclick="toggleAccountInfo()">
+                Tampilkan Detail Akun
+            </button>
+            <div id="accountInfoBox" class="account-info-box">
+                <p><span class="info-label">Username:</span> <span id="displayUsername">user001</span></p>
+                <p><span class="info-label">Password:</span> <span id="displayPassword">pass1</span></p>
+                <p style="color:var(--color-primary); margin-top: 10px; font-size:0.9em;">⚠️ Data ini hanya untuk demonstrasi.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleAccountInfo() {
+            const infoBox = document.getElementById('accountInfoBox');
+            const button = document.querySelector('.show-info-btn');
+
+            if (infoBox.style.display === 'block') {
+                infoBox.style.display = 'none';
+                button.textContent = 'Tampilkan Detail Akun';
+            } else {
+                infoBox.style.display = 'block';
+                button.textContent = 'Sembunyikan Detail Akun';
+            }
+        }
+    </script>
+</body>
+</html>

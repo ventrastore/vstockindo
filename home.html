@@ -3,105 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VStock Investasi - Cahaya Citra</title>
-    <link rel="stylesheet" href="style.css">
+    <title>VStock Home Page - Toggle Konten Responsif (Desain Berita Baru)</title>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>VStock</h1>
-                <span>by Cahaya Citra</span>
-            </div>
-            
-            <!-- Desktop Navigation -->
-            <nav class="desktop-nav">
-                <a href="home.html" class="active">Home</a>
-                <a href="investview(1).html">Investview</a> <!-- PERBAIKAN: spasi ditambahkan -->
-                <a href="news(2).html">News</a>
-                <a href="about(3).html">About</a>
-                <a href="contact(A).html">Contact</a>
-                <a href="login(A).html" class="login-btn">Login</a>
-            </nav>
 
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <header class="header">
+        <a href="#" class="logo"><span class="logo-icon">V</span>Stock</a>
+        
+        <div class="hamburger" id="hamburger-menu">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
         </div>
-
-        <!-- Mobile Navigation -->
-        <nav class="mobile-nav">
-            <a href="home.html" class="active">Home</a>
-            <a href="investview(1).html">Investview</a> <!-- PERBAIKAN: link mobile juga harus diupdate -->
-            <a href="news(2).html">News</a>
-            <a href="about(3).html">About</a>
-            <a href="contact(A).html">Contact</a>
-            <a href="login(A).html" class="login-btn">Login</a>
+        
+        <nav class="nav-links" id="nav-links">
+            <a href="home.html" class="active-link">Home</a>
+            <a href="investview.html">InvestView</a>
+            <a href="berita.html">Berita</a>
+            <a href="tentangkami.html">Tentang Kami</a>
+            <a href="helpcall.html">Help Call</a>
+            <a href="login.html" class="nav-cta">Masuk/Daftar</a>
         </nav>
     </header>
 
-    <main class="container">
-        <section class="hero">
-            <div class="hero-content">
-                <h2>VStock</h2>
-                <p>Platform investasi saham modern minimalis</p>
-            </div>
-        </section>
-
-        <section class="stocks">
-            <h3>Saham Unggulan</h3>
-            <div class="stocks-grid">
-                <div class="stock-card">
-                    <div class="stock-header">
-                        <h4>Ventra Stock</h4>
-                        <span>Ven Store</span>
-                    </div>
-                    <div class="price">Rp 11,928</div>
-                    <div class="change positive">+5.02%</div>
-                </div>
-
-                <div class="stock-card">
-                    <div class="stock-header">
-                        <h4>Prima Kelas D</h4>
-                        <span>Prima Jaya Central IDS</span>
-                    </div>
-                    <div class="price">Rp 18,105</div>
-                    <div class="change positive">+2.07%</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="features">
-            <h3>Layanan Kami</h3>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"></div>
-                    <h4>Investview</h4>
-                    <p>Analisis saham modern dengan tools canggih</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"></div>
-                    <h4>Market News</h4>
-                    <p>Berita terkini seputar pasar modal dan ekonomi</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"></div>
-                    <h4>Community</h4>
-                    <p>Diskusi dengan investor dan analis berpengalaman</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+    <section class="features-section">
         <div class="container">
-            <p>&copy; 2025 VStock Investasi by Cahaya Citra</p>
-        </div>
-    </footer>
 
-    <script src="script.js"></script>
+            <div class="heading-shape open" id="trigger-heading">
+                <div style="text-align: left;">
+                    <h2 class="features-title">Mengapa Memilih VStock?</h2>
+                    <p class="features-action-hint" id="action-hint">Klik untuk Lihat Berita & Update Live</p>
+                </div>
+                <span class="toggle-icon" id="toggle-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+                    </svg>
+                </span>
+            </div>
+
+            <div class="features-grid" id="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper"><img src="G1.jpg" alt="Ikon Aman & Terpercaya" class="feature-icon-img"></div>
+                    <h3>Aman & Terpercaya</h3>
+                    <p>Terdaftar dan diawasi OJK untuk keamanan dana Anda.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper"><img src="G2.jpg" alt="Ikon Mulai Cepat" class="feature-icon-img"></div>
+                    <h3>Mulai Cepat</h3>
+                    <p>Pendaftaran mudah, investasi bisa dimulai dalam menit.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper"><img src="G3.jpg" alt="Ikon Edukasi Lengkap" class="feature-icon-img"></div>
+                    <h3>Edukasi Lengkap</h3>
+                    <p>Belajar investasi lewat materi yang mudah dipahami.</p>
+                </div>
+            </div>
+
+            <div class="features-grid hide-grid" id="news-grid">
+                <div class="news-card">
+                    <div class="news-image-wrapper"><img src="b1.png" alt="SDKPM2 Performance"></div>
+                    <div class="news-content">
+                        <span class="stock-tag">SDKPM2</span>
+                        <h3>SDK Putra Mandiri Catat Kenaikan 15%</h3>
+                        <p>Emiten properti menunjukkan kinerja impresif dengan kenaikan 15% dalam kuartal terakhir.</p>
+                        <div class="price-info">
+                            <span class="current-price">Rp 2.150</span>
+                            <span class="price-change positive">+5.2%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image-wrapper"><img src="b2.png" alt="G2TS Digital Expansion"></div>
+                    <div class="news-content">
+                        <span class="stock-tag">G2TS</span>
+                        <h3>Gria Tabungan Syariah Ekspansi Digital</h3>
+                        <p>Transformasi digital mulai menunjukkan hasil dengan pertumbuhan pengguna 45%</p>
+                        <div class="price-info">
+                            <span class="current-price">Rp 4.850</span>
+                            <span class="price-change positive">+3.8%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image-wrapper"><img src="b3.png" alt="VCPE2 Financial Report"></div>
+                    <div class="news-content">
+                        <span class="stock-tag">VCPE2</span>
+                        <h3>Ventra Commercial PE Laba Tumbuh 28%</h3>
+                        <p>Laporan kuartal pertama menunjukkan pertumbuhan laba bersih sebesar 28%.</p>
+                        <div class="price-info">
+                            <span class="current-price">Rp 1.120</span>
+                            <span class="price-change positive">+2.1%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image-wrapper"><img src="b4.png" alt="SH2IS Dividend"></div>
+                    <div class="news-content">
+                        <span class="stock-tag">SH2IS</span>
+                        <h3>Sinta Muri Umumkan Dividen Rp 150</h3>
+                        <p>Perusahaan mengumumkan pembagian dividen sebesar Rp 150 per saham untuk bulan depan</p>
+                        <div class="price-info">
+                            <span class="current-price">Rp 5.250</span>
+                            <span class="price-change positive">+1.5%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image-wrapper"><img src="b5.png" alt="GM11P ASEAN Expansion"></div>
+                    <div class="news-content">
+                        <span class="stock-tag">GM11P</span>
+                        <h3>Gajah Mada Prioritas Ekspansi Ke Riau</h3>
+                        <p>Rencana ekspansi ke Riau untuk meningkatkan pangsa pasar ke Batam</p>
+                        <div class="price-info">
+                            <span class="current-price">Rp 9.450</span>
+                            <span class="price-change negative">-0.8%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image-wrapper"><img src="b6.png"></div>
+                    <div class="news-content">
+                        <span class="stock-tag">SKSD</span>
+                        <h3>SK Sinta Dewi Raih Sertifikasi </h3>
+                        <p>Perusahaan berhasil mendapatkan sertifikasi kualitas  untuk produknya.</p>
+                        <div class="price-info">
+                            <span class="current-price">Rp 1.680</span>
+                            <span class="price-change positive">+4.2%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="home.js"></script>
+
 </body>
 </html>
